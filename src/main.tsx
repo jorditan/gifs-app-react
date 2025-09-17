@@ -6,5 +6,6 @@ import { GifsApp } from './GifsApp'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GifsApp />
+    {/* <MyCounterApp /> */}
   </StrictMode>
 )
