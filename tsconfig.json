@@ -8,6 +8,10 @@
     "jsx": "react-jsx",         // o "react-jsxdev"
     "jsxImportSource": "react", // si usás el runtime nuevo
     "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "verbatimModuleSyntax": false // quitalo si no lo necesitás
 }
 }

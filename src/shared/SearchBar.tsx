@@ -31,8 +31,9 @@ export const SearchBar = ({ placeholder, onQuery }: Props) => {
 
   return (
     <>
-      <div className="search-container">
+      <div className="search-container flex gap-3 pb-5">
         <input type="text"
+          className="text-[#fafafa]"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
