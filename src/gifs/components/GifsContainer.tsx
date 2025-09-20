@@ -1,19 +1,24 @@
+import { toast } from "sonner"
+import { Download, Heart } from "lucide-react";
+
 import type { FC } from "react";
 import type { Gif } from "../interfaces/gif.interface";
 import { ButtonIcon } from "../../shared/ButtonIcon";
-import { Download, Heart } from "lucide-react";
+
 interface Props {
   gifs: Gif[];
+  onDownloadClick: (gif: Gif) => void;
 }
 
-export const GifsContainer: FC<Props> = ({ gifs }) => {
-  // const handleDownload = (url: string) => {
+export const GifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
 
-  // }
+  const handleFav = () => {
+    toast('GIF guardado en favoritos')
+  }
 
   return (
     <>
-      <div className="gifs-container">
+      <div className="gifs-container b-4">
         {
           gifs.map((gif) => (
             <div key={gif.id} className="gif-card flex gap-4">
@@ -24,8 +29,8 @@ export const GifsContainer: FC<Props> = ({ gifs }) => {
                   {gif.width} x {gif.height}
                 </p>
                 <div className="flex gap-2">
-                  <ButtonIcon variant="outline" tooltipText="Descargar" icon={Download} />
-                  <ButtonIcon variant="outline" tooltipText="Guardar en favoritos" icon={Heart} />
+                  <ButtonIcon handleAction={() => onDownloadClick(gif)} variant="outline" tooltipText="Descargar" icon={Download} />
+                  <ButtonIcon handleAction={() => handleFav()} variant="outline" tooltipText="Guardar en favoritos" icon={Heart} />
                 </div>
               </div>
             </div>

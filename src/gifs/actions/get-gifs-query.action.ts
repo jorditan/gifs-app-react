@@ -2,7 +2,11 @@ import type { Gif } from "../interfaces/gif.interface";
 import type { GiphyResponse } from "../interfaces/gifphy.response";
 import { giphyApi } from "../api/giphy.api";
 
-export const getGifsByQuery = async (query: string): Promise<Gif[]> => {
+export const getGifsByQuery = async (
+  query: string,
+  offset: number = 0,
+  limit: number = 10,
+): Promise<Gif[]> => {
   if (query.trim().length === 0) {
     return [];
   }
@@ -13,7 +17,8 @@ export const getGifsByQuery = async (query: string): Promise<Gif[]> => {
       {
         params: {
           q: query,
-          limit: 10,
+          limit: limit,
+          offset: offset,
         },
       },
     );
