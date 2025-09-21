@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import { CustomDropdownMenu } from "./CustomDropdownMenu";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 interface Props {
   placeholder: string
+  page: number;
   onQuery: (query: string) => void;
 }
 
-export const SearchBar = ({ placeholder, onQuery }: Props) => {
+export const SearchBar = ({ placeholder, onQuery, page }: Props) => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -32,16 +36,17 @@ export const SearchBar = ({ placeholder, onQuery }: Props) => {
   return (
     <>
       <div className="search-container flex gap-3 pb-5">
-        <input type="text"
-          className="text-[#fafafa]"
+        <Input type="text"
+          className="text-[#fafafa] w-1/4"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
-          onKeyDown={handleKeyDown}
-        />
-        <button
+          onKeyDown={handleKeyDown}>
+        </Input>
+        <Button variant="secondary"
           onClick={handleSearch}
-        >Buscar</button>
+        >Buscar</Button>
+        <CustomDropdownMenu buttonText={`Límite: ${page}`} items={[5, 10, 15, 20, 30, 40]} />
       </div>
     </>
   )

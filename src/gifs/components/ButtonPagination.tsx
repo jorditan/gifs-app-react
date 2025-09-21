@@ -4,11 +4,13 @@ import type { FC } from "react";
 
 interface Props {
   gifs: Gif[];
-  onNextClick: (page: number) => void;
-  onPrevClick: (page: number) => void;
+  currentPage: number;
+  fetch: boolean;
+  onNextClick: () => void;
+  onPrevClick: () => void;
 }
 
-export const ButtonPagination: FC<Props> = ({ gifs, onNextClick, onPrevClick }) => {
+export const ButtonPagination: FC<Props> = ({ gifs, onNextClick, onPrevClick, currentPage }) => {
   return (
     <>
       <div className="pb-8">
@@ -16,13 +18,27 @@ export const ButtonPagination: FC<Props> = ({ gifs, onNextClick, onPrevClick }) 
           <Pagination>
             <PaginationContent>
               <PaginationItem>
-                <PaginationPrevious onClick={() => onNextClick} />
+                <PaginationPrevious className="cursor-pointer" onClick={(e) => { e.preventDefault(); onPrevClick(); }} />
               </PaginationItem>
               <PaginationItem>
-                <PaginationLink >1</PaginationLink>
+                <PaginationLink className={`${currentPage === 1
+                  ? "text-gray-500 cursor-not-allowed hover:bg-gray-600"
+                  : "cursor-pointer"
+                  }`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onPrevClick();
+                  }}
+                >{currentPage - 1}</PaginationLink>
               </PaginationItem>
               <PaginationItem>
-                <PaginationNext onClick={() => onPrevClick} />
+                <PaginationLink className="bg-secondary text-secondary-foreground" >{currentPage}</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink className="cursor-pointer" onClick={(e) => { e.preventDefault(); onNextClick(); }} >{currentPage + 1}</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext className="cursor-pointer" onClick={(e) => { e.preventDefault(); onNextClick(); }} />
               </PaginationItem>
             </PaginationContent>
           </Pagination>
