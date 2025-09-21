@@ -1,6 +1,7 @@
 import type { Gif } from "../interfaces/gif.interface";
 import type { GiphyResponse } from "../interfaces/gifphy.response";
 import { giphyApi } from "../api/giphy.api";
+import { toast } from "sonner";
 
 export const getGifsByQuery = async (
   query: string,
@@ -22,6 +23,11 @@ export const getGifsByQuery = async (
         },
       },
     );
+
+    if (response.data.data.length == 0) {
+      toast("No se han encontrado resultados.");
+      return [];
+    }
 
     return response.data.data.map((gif) => ({
       id: gif.id,

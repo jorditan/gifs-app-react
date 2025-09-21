@@ -6,14 +6,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import type { FC } from "react"
+import { Check } from "lucide-react";
+import { type FC } from "react"
 
 interface Props {
   buttonText: string,
+  pageSize: number,
   items: number[],
+  onItemClick: (newSize: number) => void;
 }
 
-export const CustomDropdownMenu: FC<Props> = ({ buttonText, items }) => {
+export const CustomDropdownMenu: FC<Props> = ({ buttonText, items, onItemClick, pageSize }) => {
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -23,8 +27,14 @@ export const CustomDropdownMenu: FC<Props> = ({ buttonText, items }) => {
         <DropdownMenuGroup>
           {
             items.map((i) =>
-              <DropdownMenuItem>
+              <DropdownMenuItem className={`${i === pageSize
+                ? "bg-primary text-secondary"
+                : "cursor-pointer"
+                }`} onClick={() => onItemClick(i)}>
                 {i}
+                {
+                  i === pageSize && (<Check />)
+                }
               </DropdownMenuItem>
             )
           }

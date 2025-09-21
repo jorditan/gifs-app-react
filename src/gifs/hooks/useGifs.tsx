@@ -8,7 +8,8 @@ import { usePagination } from "./usePagination";
 export const useGifs = () => {
   const queryClient = useQueryClient();
   const { page, setPage } = usePagination();
-  const pageSize = 10;
+
+  const [pageSize, setPageSize] = useState(10);
   const offsetSize = page * pageSize
 
   const [query, setQuery] = useState("");
@@ -26,8 +27,8 @@ export const useGifs = () => {
     staleTime: 60_000,
   });
 
+
   const handleSearch = (raw: string) => {
-    console.log(page);
     const q = raw.toLowerCase().trim();
     if (!q) return;
 
@@ -41,7 +42,6 @@ export const useGifs = () => {
       queryKey: ["gifs", { q, offset: offsetSize, limit: pageSize }],
       queryFn: () => getGifsByQuery(q, offsetSize, pageSize),
     });
-
   };
 
   const handleTermClicked = (term: string) => {
@@ -74,6 +74,10 @@ export const useGifs = () => {
     }
   };
 
+  const handlePageSize = (newSize: number) => {
+    setPageSize(newSize);
+  }
+
   const handleDownload = async (gif: Gif) => {
     try {
       const res = await fetch(gif.url);
@@ -103,8 +107,10 @@ export const useGifs = () => {
     isLoading,
     isFetching,
     page,
+    pageSize,
 
     handleSearch,
+    handlePageSize,
     handleTermClicked,
     handleNextPage,
     handlePrevPage,

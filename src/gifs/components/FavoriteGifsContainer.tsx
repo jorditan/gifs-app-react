@@ -1,4 +1,5 @@
-import { Download, Heart, HeartOff } from "lucide-react";
+import { Download, Heart } from "lucide-react";
+
 import type { FC } from "react";
 import type { Gif } from "../interfaces/gif.interface";
 import { ButtonIcon } from "../../shared/ButtonIcon";
@@ -9,30 +10,24 @@ interface Props {
   onDownloadClick: (gif: Gif) => void;
 }
 
-export const GifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
-  const { addFavorite, favoriteGifs } = useGifsStore()
+export const FavoriteGifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
+  const { addFavorite } = useGifsStore()
 
   return (
     <>
-      {
-        gifs.length == 0 && <p className="text-sm text-muted text-center w-full">Aquí veras los GIF´s que busques</p>
-      }
       <div className="gifs-container b-4">
         {
           gifs.map((gif) => (
             <div key={gif.id} className="gif-card flex gap-4">
               <img src={gif.url} alt={gif.title} />
-
-              <h3>{gif.title} <span className="text-xs">
-                ({gif.width} x {gif.height} px)
-              </span></h3>
-
+              <h3>{gif.title}</h3>
               <div className="flex flex-column gap-4 items-center justify-around">
+                <p>
+                  {gif.width} x {gif.height}
+                </p>
                 <div className="flex gap-2">
                   <ButtonIcon handleAction={() => onDownloadClick(gif)} variant="outline" tooltipText="Descargar" icon={Download} />
-
-                  <ButtonIcon handleAction={() => addFavorite(gif)} variant="outline" tooltipText={favoriteGifs.includes(gif) ? "Quitar de favoritos" : "Guardar en favoritos"} icon={favoriteGifs.includes(gif) ? HeartOff : Heart}
-                  />
+                  <ButtonIcon handleAction={() => addFavorite(gif)} variant="outline" tooltipText="Guardar en favoritos" icon={Heart} />
                 </div>
               </div>
             </div>
