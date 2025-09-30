@@ -18,10 +18,11 @@ export const ButtonPagination: FC<Props> = ({ gifs, onNextClick, onPrevClick, cu
           <Pagination>
             <PaginationContent>
               <PaginationItem>
-                <PaginationPrevious className={`${currentPage === 1
-                  ? "text-gray-500 cursor-not-allowed hover:bg-gray-600"
-                  : "cursor-pointer"
-                  }`} onClick={(e) => { e.preventDefault(); onPrevClick(); }} />
+                <PaginationPrevious data-testid="prev-btn"
+                  className={`${currentPage === 1
+                    ? "text-gray-500 cursor-not-allowed hover:bg-gray-600"
+                    : "cursor-pointer"
+                    }`} onClick={(e) => { e.preventDefault(); onPrevClick(); }} />
               </PaginationItem>
               <PaginationItem>
                 <PaginationLink className={`${currentPage === 1

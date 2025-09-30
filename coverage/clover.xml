@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1758801467246" clover="3.2.0">
-  <project timestamp="1758801467246" name="All files">
+<coverage generated="1759230712370" clover="3.2.0">
+  <project timestamp="1759230712371" name="All files">
     <metrics statements="911" coveredstatements="596" conditionals="78" coveredconditionals="67" methods="69" coveredmethods="43" elements="1058" coveredelements="706" complexity="0" loc="911" ncloc="911" packages="14" files="28" classes="28"/>
     <package name="src">
       <metrics statements="41" coveredstatements="41" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -748,20 +748,20 @@
         <metrics statements="16" coveredstatements="16" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="36" type="stmt"/>
-        <line num="6" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="34" type="stmt"/>
+        <line num="6" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="11" type="stmt"/>
         <line num="8" count="11" type="stmt"/>
-        <line num="10" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="11" count="13" type="stmt"/>
         <line num="12" count="13" type="stmt"/>
-        <line num="13" count="36" type="stmt"/>
-        <line num="16" count="36" type="stmt"/>
-        <line num="17" count="36" type="stmt"/>
-        <line num="19" count="36" type="stmt"/>
-        <line num="20" count="36" type="stmt"/>
-        <line num="21" count="36" type="stmt"/>
-        <line num="22" count="36" type="stmt"/>
+        <line num="13" count="34" type="stmt"/>
+        <line num="16" count="34" type="stmt"/>
+        <line num="17" count="34" type="stmt"/>
+        <line num="19" count="34" type="stmt"/>
+        <line num="20" count="34" type="stmt"/>
+        <line num="21" count="34" type="stmt"/>
+        <line num="22" count="34" type="stmt"/>
       </file>
     </package>
     <package name="src.gifs.hooks.useGifs">
@@ -774,23 +774,23 @@
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="36" type="stmt"/>
-        <line num="10" count="36" type="stmt"/>
-        <line num="12" count="36" type="stmt"/>
-        <line num="13" count="36" type="stmt"/>
-        <line num="15" count="36" type="stmt"/>
-        <line num="16" count="36" type="stmt"/>
-        <line num="18" count="36" type="stmt"/>
-        <line num="19" count="36" type="stmt"/>
-        <line num="20" count="36" type="stmt"/>
-        <line num="21" count="36" type="stmt"/>
-        <line num="22" count="36" type="stmt"/>
-        <line num="23" count="36" type="stmt"/>
-        <line num="24" count="36" type="cond" truecount="1" falsecount="0"/>
-        <line num="25" count="36" type="stmt"/>
-        <line num="27" count="36" type="cond" truecount="1" falsecount="0"/>
-        <line num="28" count="36" type="stmt"/>
-        <line num="30" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="34" type="stmt"/>
+        <line num="10" count="34" type="stmt"/>
+        <line num="12" count="34" type="stmt"/>
+        <line num="13" count="34" type="stmt"/>
+        <line num="15" count="34" type="stmt"/>
+        <line num="16" count="34" type="stmt"/>
+        <line num="18" count="34" type="stmt"/>
+        <line num="19" count="34" type="stmt"/>
+        <line num="20" count="34" type="stmt"/>
+        <line num="21" count="34" type="stmt"/>
+        <line num="22" count="34" type="stmt"/>
+        <line num="23" count="34" type="stmt"/>
+        <line num="24" count="34" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="34" type="stmt"/>
+        <line num="27" count="34" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="34" type="stmt"/>
+        <line num="30" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="31" count="25" type="cond" truecount="2" falsecount="0"/>
         <line num="32" count="12" type="stmt"/>
         <line num="33" count="12" type="stmt"/>
@@ -803,8 +803,8 @@
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="44" count="36" type="stmt"/>
-        <line num="47" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="44" count="34" type="stmt"/>
+        <line num="47" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="48" count="11" type="stmt"/>
         <line num="49" count="11" type="cond" truecount="0" falsecount="1"/>
         <line num="51" count="11" type="cond" truecount="1" falsecount="0"/>
@@ -815,14 +815,14 @@
         <line num="58" count="11" type="cond" truecount="1" falsecount="0"/>
         <line num="59" count="11" type="stmt"/>
         <line num="60" count="11" type="stmt"/>
-        <line num="63" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="63" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="64" count="3" type="stmt"/>
         <line num="65" count="3" type="stmt"/>
-        <line num="67" count="36" type="cond" truecount="2" falsecount="0"/>
-        <line num="69" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="67" count="34" type="cond" truecount="2" falsecount="0"/>
+        <line num="69" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="70" count="1" type="stmt"/>
         <line num="71" count="1" type="stmt"/>
-        <line num="73" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="73" count="34" type="cond" truecount="1" falsecount="0"/>
         <line num="74" count="1" type="stmt"/>
         <line num="75" count="1" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
@@ -842,20 +842,20 @@
         <line num="92" count="1" type="stmt"/>
         <line num="93" count="1" type="stmt"/>
         <line num="94" count="1" type="stmt"/>
-        <line num="96" count="36" type="stmt"/>
-        <line num="97" count="36" type="stmt"/>
-        <line num="98" count="36" type="stmt"/>
-        <line num="99" count="36" type="stmt"/>
-        <line num="100" count="36" type="stmt"/>
-        <line num="101" count="36" type="stmt"/>
-        <line num="102" count="36" type="stmt"/>
-        <line num="104" count="36" type="stmt"/>
-        <line num="105" count="36" type="stmt"/>
-        <line num="106" count="36" type="stmt"/>
-        <line num="107" count="36" type="stmt"/>
-        <line num="108" count="36" type="stmt"/>
-        <line num="109" count="36" type="stmt"/>
-        <line num="110" count="36" type="stmt"/>
+        <line num="96" count="34" type="stmt"/>
+        <line num="97" count="34" type="stmt"/>
+        <line num="98" count="34" type="stmt"/>
+        <line num="99" count="34" type="stmt"/>
+        <line num="100" count="34" type="stmt"/>
+        <line num="101" count="34" type="stmt"/>
+        <line num="102" count="34" type="stmt"/>
+        <line num="104" count="34" type="stmt"/>
+        <line num="105" count="34" type="stmt"/>
+        <line num="106" count="34" type="stmt"/>
+        <line num="107" count="34" type="stmt"/>
+        <line num="108" count="34" type="stmt"/>
+        <line num="109" count="34" type="stmt"/>
+        <line num="110" count="34" type="stmt"/>
       </file>
     </package>
     <package name="src.gifs.interfaces">
