@@ -144,5 +144,4 @@ describe('ButtonPagination', () => {
     expect(prevNumberButton).toHaveClass('text-gray-500', 'cursor-not-allowed')
     expect(prevNumberButton).not.toHaveClass('cursor-pointer')
   })
-
 })

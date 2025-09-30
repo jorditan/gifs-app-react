@@ -15,15 +15,15 @@ import {
 
 import { Button } from "@/components/ui/button"
 
-export function ButtonIcon(props: Props) {
+export function ButtonIcon(props: Props & { tooltipDefaultOpen?: boolean }) {
   return (
-    <Tooltip >
+    <Tooltip defaultOpen={props.tooltipDefaultOpen}>
       <TooltipTrigger asChild>
         <Button onClick={props.handleAction} variant={props.variant} size="icon" className="size-8">
           <props.icon />
         </Button>
       </TooltipTrigger>
-      <TooltipContent>
+      <TooltipContent data-testid="button-icon-tooltip">
         {props.tooltipText}
       </TooltipContent>
     </Tooltip>

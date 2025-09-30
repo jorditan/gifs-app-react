@@ -4,7 +4,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 
 describe('SearchBar', () => {
   test('should render searchbar correctly', () => {
-    const { container } = render(<SearchBar onQuery={() => { }} placeholder={""} />)
+    const { container } = render(<SearchBar onQuery={() => { }} placeholder={""} page={0} />)
 
     expect(container).toMatchSnapshot()
     expect(screen.getByRole('textbox')).toBeDefined();
@@ -13,7 +13,7 @@ describe('SearchBar', () => {
 
   test('should call onQuery with the correct value after 700ms', async () => {
     const onQuery = vi.fn();
-    render(<SearchBar onQuery={onQuery} placeholder={""} />)
+    render(<SearchBar onQuery={onQuery} placeholder={""} page={0} />)
 
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test' } });
@@ -25,7 +25,7 @@ describe('SearchBar', () => {
 
   test('should call only once with the las value (debounce)', async () => {
     const onQuery = vi.fn();
-    render(<SearchBar onQuery={onQuery} placeholder={""} />)
+    render(<SearchBar onQuery={onQuery} placeholder={""} page={0} />)
 
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 't' } });
@@ -41,7 +41,7 @@ describe('SearchBar', () => {
 
   test('should call onQuery when button clicked with the input value', async () => {
     const onQuery = vi.fn();
-    render(<SearchBar onQuery={onQuery} placeholder={""} />)
+    render(<SearchBar onQuery={onQuery} placeholder={""} page={0} />)
 
     const button = screen.getByRole('button');
     const input = screen.getByRole('textbox');
@@ -57,14 +57,14 @@ describe('SearchBar', () => {
 
   test('should the input has the correct placeholder value', () => {
     const placeholderValue = "buscar";
-    render(<SearchBar onQuery={() => { }} placeholder={placeholderValue} />)
+    render(<SearchBar onQuery={() => { }} placeholder={placeholderValue} page={0} />)
 
     expect(screen.getByPlaceholderText(placeholderValue));
   })
 
   test('should call onQuery when key "Enter" is called', () => {
     const onQuery = vi.fn();
-    render(<SearchBar onQuery={onQuery} placeholder={""} />)
+    render(<SearchBar onQuery={onQuery} placeholder={""} page={0} />)
 
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { value: 'test' } });
