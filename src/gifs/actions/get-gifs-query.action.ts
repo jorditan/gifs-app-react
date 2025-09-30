@@ -37,6 +37,7 @@ export const getGifsByQuery = async (
       height: Number(gif.images.original.height),
     }));
   } catch (error) {
+    toast.error("Se ha producido un error, vuelve a intentarlo más tarde");
     console.error(error);
     return [];
   }

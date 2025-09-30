@@ -1,5 +1,5 @@
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationNext, PaginationLink } from "@/components/ui/pagination"
-import type { Gif } from "../interfaces/gif.interface";
+import type { Gif } from "@/gifs/interfaces/gif.interface";
 import type { FC } from "react";
 
 interface Props {
@@ -18,7 +18,10 @@ export const ButtonPagination: FC<Props> = ({ gifs, onNextClick, onPrevClick, cu
           <Pagination>
             <PaginationContent>
               <PaginationItem>
-                <PaginationPrevious className="cursor-pointer" onClick={(e) => { e.preventDefault(); onPrevClick(); }} />
+                <PaginationPrevious className={`${currentPage === 1
+                  ? "text-gray-500 cursor-not-allowed hover:bg-gray-600"
+                  : "cursor-pointer"
+                  }`} onClick={(e) => { e.preventDefault(); onPrevClick(); }} />
               </PaginationItem>
               <PaginationItem>
                 <PaginationLink className={`${currentPage === 1

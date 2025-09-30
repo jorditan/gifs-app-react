@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 
 export const usePagination = () => {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(0);
+
+  const resetPagination = () => {
+    setPage(0);
+  }
 
   useEffect(() => {
     setPage(page)
@@ -12,6 +16,7 @@ export const usePagination = () => {
   return {
     page,
 
+    resetPagination,
     setPage
   }
 }

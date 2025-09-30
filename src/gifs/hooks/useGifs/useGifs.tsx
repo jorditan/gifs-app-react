@@ -1,81 +1,73 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getGifsByQuery } from "../actions/get-gifs-query.action";
-import type { Gif } from "../interfaces/gif.interface";
+import { getGifsByQuery } from "../../actions/get-gifs-query.action";
+import type { Gif } from "../../interfaces/gif.interface";
 import { toast } from "sonner";
-import { usePagination } from "./usePagination";
+import { usePagination } from "../usePagination";
 
 export const useGifs = () => {
   const queryClient = useQueryClient();
-  const { page, setPage } = usePagination();
+  const { page, setPage, resetPagination } = usePagination();
 
   const [pageSize, setPageSize] = useState(10);
-  const offsetSize = page * pageSize
+  const offset = page * pageSize
 
   const [query, setQuery] = useState("");
   const [previousTerms, setPreviousTerms] = useState<string[]>([]);
 
   const {
     data: gifs = [],
-    isLoading,
+    isSuccess,
     isFetching,
   } = useQuery({
-    queryKey: ["gifs", { q: query, offset: offsetSize, limit: pageSize }],
-    queryFn: () => getGifsByQuery(query, offsetSize, pageSize),
+    queryKey: ["gifs", { q: query, offset: offset, limit: pageSize }],
+    queryFn: () => getGifsByQuery(query, offset, pageSize),
     enabled: query.trim().length > 0,
+
     placeholderData: (prev) => prev,
-    staleTime: 60_000,
   });
+
+  useEffect(() => {
+    if (!query) { return };
+    const nextPageOffset = (page + 1) * pageSize;
+    queryClient.prefetchQuery({
+      queryKey: ["gifs", { q: query, offset: nextPageOffset, limit: pageSize }],
+      queryFn: () => getGifsByQuery(query, nextPageOffset, pageSize),
+    })
+
+    if (page > 0) {
+      queryClient.prefetchQuery({
+        queryKey: ["gifs", { q: query, offset: nextPageOffset, limit: pageSize }],
+        queryFn: () => getGifsByQuery(query, page - 1, pageSize),
+      });
+    }
+  }, [page, pageSize, queryClient, query])
 
 
   const handleSearch = (raw: string) => {
     const q = raw.toLowerCase().trim();
     if (!q) return;
 
+    if (previousTerms.length === 0 || q !== previousTerms[0]) {
+      resetPagination();
+    }
+
     setQuery(q);
 
     if (!previousTerms.includes(q)) {
       setPreviousTerms((prev) => [q, ...prev].slice(0, 8));
     }
-
-    queryClient.prefetchQuery({
-      queryKey: ["gifs", { q, offset: offsetSize, limit: pageSize }],
-      queryFn: () => getGifsByQuery(q, offsetSize, pageSize),
-    });
   };
 
-  const handleTermClicked = (term: string) => {
-    handleSearch(term);
-  };
 
   const handleNextPage = () => {
-    const next = page + 1;
-    setPage(next);
-
-    if (query) {
-      const nextPageOffset = next * offsetSize
-      queryClient.prefetchQuery({
-        queryKey: ["gifs", { q: query, offset: nextPageOffset, limit: pageSize }],
-        queryFn: () => getGifsByQuery(query, nextPageOffset, pageSize),
-      });
-    }
+    const next = page + 1; setPage(next);
   };
 
-  const handlePrevPage = () => {
-    const prev = Math.max(0, page - 1);
+  const handlePrevPage = () => setPage(p => Math.max(0, p - 1));
 
-    if (query && prev > 0) {
-      setPage(prev);
-      const prevOffset = prev * offsetSize
-      queryClient.prefetchQuery({
-        queryKey: ["gifs", { q: query, offset: prevOffset, limit: pageSize }],
-        queryFn: () => getGifsByQuery(query, prevOffset, pageSize),
-      });
-    }
-  };
-
-  const handlePageSize = (newSize: number) => {
-    setPageSize(newSize);
+  const handlePageSize = (size: number) => {
+    setPageSize(size);
   }
 
   const handleDownload = async (gif: Gif) => {
@@ -104,14 +96,13 @@ export const useGifs = () => {
   return {
     gifs,
     previousTerms,
-    isLoading,
+    isSuccess,
     isFetching,
     page,
     pageSize,
 
     handleSearch,
     handlePageSize,
-    handleTermClicked,
     handleNextPage,
     handlePrevPage,
     handleDownload,
