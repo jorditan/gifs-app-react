@@ -23,7 +23,6 @@ export const useGifs = () => {
     queryKey: ["gifs", { q: query, offset: offset, limit: pageSize }],
     queryFn: () => getGifsByQuery(query, offset, pageSize),
     enabled: query.trim().length > 0,
-
     placeholderData: (prev) => prev,
   });
 
@@ -41,6 +40,7 @@ export const useGifs = () => {
         queryFn: () => getGifsByQuery(query, page - 1, pageSize),
       });
     }
+
   }, [page, pageSize, queryClient, query])
 
 
