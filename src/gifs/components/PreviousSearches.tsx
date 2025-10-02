@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import type { FC } from "react"
 
 interface Props {
@@ -14,10 +15,11 @@ export const PreviousSearches: FC<Props> = ({ searches, onLabelClick }) => {
         <ul className="previous-searches-list">
           {
             searches.map(term => (
-              <li onClick={() => onLabelClick(term)} key={term}>{term}</li>
+              <Badge className="cursor-pointer" variant="outline" key={term} onClick={() => onLabelClick(term)}>{term}</Badge>
             ))
           }
         </ul>
+        <Badge content="hola" />
       </div>
     </>
   )

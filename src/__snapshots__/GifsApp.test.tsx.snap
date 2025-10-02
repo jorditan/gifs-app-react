@@ -2,8 +2,9 @@
 
 exports[`GifsApp > shold render component properly 1`] = `
 <div>
+  return (
   <div
-    class="content-center"
+    class="content-center pb-4 pt-4"
   >
     <h1>
       Buscador de Gifs
@@ -13,15 +14,35 @@ exports[`GifsApp > shold render component properly 1`] = `
     </p>
   </div>
   <div
-    class="search-container"
+    class="flex flex-row justify-center w-full gap-3"
   >
-    <input
-      placeholder="Buscar gif"
-      type="text"
-      value=""
-    />
-    <button>
-      Buscar
+    <div
+      class="search-container flex gap-3 pb-5"
+    >
+      <input
+        class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-[#fafafa] w-full"
+        data-slot="input"
+        placeholder="Buscar gif"
+        type="text"
+        value=""
+      />
+      <button
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 px-4 py-2 has-[>svg]:px-3"
+        data-slot="button"
+      >
+        Buscar
+      </button>
+    </div>
+    <button
+      aria-expanded="false"
+      aria-haspopup="menu"
+      class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-primary shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-9 px-4 py-2 has-[>svg]:px-3"
+      data-slot="dropdown-menu-trigger"
+      data-state="closed"
+      id="radix-«r0»"
+      type="button"
+    >
+      Límite: 10
     </button>
   </div>
   <div
@@ -33,9 +54,22 @@ exports[`GifsApp > shold render component properly 1`] = `
     <ul
       class="previous-searches-list"
     />
+    <span
+      class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90"
+      content="hola"
+      data-slot="badge"
+    />
   </div>
+  <p
+    class="text-sm text-muted text-center w-full"
+  >
+    Aquí veras los GIF´s que busques
+  </p>
   <div
-    class="gifs-container"
+    class="gifs-container b-4"
+  />
+  <div
+    class="gifs-container b-4"
   />
 </div>
 `;
