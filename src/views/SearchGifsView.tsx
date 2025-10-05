@@ -1,4 +1,4 @@
-import { PreviousSearches } from "../gifs/components/PreviousSearches"
+import { PreviousSearches } from "@/gifs/components/PreviousSearches"
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
@@ -15,9 +15,9 @@ import { useGifsStore } from "@/store/useGifsStore";
 const queryClient = new QueryClient();
 
 export const SearchGifsView = () => {
-  const { handleSearch, previousTerms, gifs, handleDownload, handleNextPage, handlePrevPage, isFetching, page, handlePageSize, pageSize } = useGifs();
+  const { handleSearch, gifs, handleDownload, handleNextPage, handlePrevPage, isFetching, page, handlePageSize, pageSize } = useGifs();
 
-  const { favoriteGifs } = useGifsStore();
+  const { favoriteGifs, prevTerms, cleanTerms } = useGifsStore();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -38,7 +38,7 @@ export const SearchGifsView = () => {
             <CustomDropdownMenu onItemClick={handlePageSize} pageSize={pageSize} buttonText={`Límite: ${pageSize}`} items={[5, 10, 15, 20, 30, 40]} />
           </div>
 
-          <PreviousSearches onLabelClick={handleSearch} searches={previousTerms} />
+          <PreviousSearches onLabelClick={handleSearch} onButtonClick={cleanTerms} searches={prevTerms} />
 
           <GifsContainer onDownloadClick={handleDownload} gifs={gifs} />
 

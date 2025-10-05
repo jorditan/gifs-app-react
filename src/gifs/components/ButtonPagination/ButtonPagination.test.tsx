@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import '@testing-library/jest-dom/vitest';
 import { describe, expect, test, vi } from "vitest"
 import { ButtonPagination } from "./ButtonPagination"
-import { mockGifs } from "@/mock-data/gifs.mock"
+import { mockGifs } from "../../../mock-data/gifs.mock"
 
 describe('ButtonPagination', () => {
   const onPrevClick = vi.fn()

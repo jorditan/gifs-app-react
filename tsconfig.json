@@ -5,6 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "types": ["@testing-library/jest-dom"],
     "jsx": "react-jsx",         // o "react-jsxdev"
     "jsxImportSource": "react", // si usás el runtime nuevo
     "strict": true,
@@ -12,6 +13,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "verbatimModuleSyntax": false // quitalo si no lo necesitás
-}
+    "verbatimModuleSyntax": false,
+    // quitalo si no lo necesitás
+  }
 }

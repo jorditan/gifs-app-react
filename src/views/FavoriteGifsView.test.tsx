@@ -7,7 +7,7 @@ import { routes } from '../routes/routes'
 describe('GifsApp', () => {
   test('shold render component properly', () => {
     const queryClient = new QueryClient();
-    const router = createMemoryRouter(routes, { initialEntries: ['/'] });
+    const router = createMemoryRouter(routes, { initialEntries: ['/favorites'] });
 
     const { container } = render(
       <QueryClientProvider client={queryClient}>

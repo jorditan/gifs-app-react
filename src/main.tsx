@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "./components/ui/sonner"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -18,6 +18,5 @@ createRoot(document.getElementById('root')!).render(
       <Toaster />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-    {/* <MyCounterApp /> */}
   </StrictMode>
 )
