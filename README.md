@@ -2,25 +2,24 @@
 
 **Una aplicación moderna para buscar y gestionar GIFs favoritos, desarrollada con React, TypeScript y Vite.**
 
-## 📸 Capturas de Pantalla
-
-*// TODO: Agregar capturas de pantalla aquí*
-
 ## ✨ Características
 
 ### 🔍 Búsqueda de GIFs
+
 - **Búsqueda en tiempo real** con integración a la API de Giphy
 - **Historial de búsquedas** para acceso rápido a términos anteriores
 - **Paginación** para navegar entre resultados
 - **Información detallada** de cada GIF (dimensiones, título)
 
 ### ❤️ Gestión de Favoritos
+
 - **Agregar/Quitar favoritos** con un solo clic
 - **Persistencia local** de favoritos usando localStorage
 - **Vista dedicada** para gestionar tus GIFs favoritos
 - **Feedback visual** con notificaciones toast
 
 ### 📱 Experiencia de Usuario
+
 - **Interfaz moderna** con Tailwind CSS y componentes Radix UI
 - **Modo oscuro/claro** implementado con next-themes
 - **Tooltips informativos** en todas las acciones
@@ -28,6 +27,7 @@
 - **Animaciones fluidas** con Tailwind animations
 
 ### 🔧 Funcionalidades Técnicas
+
 - **Descarga de GIFs** directamente desde la aplicación
 - **Estado global** manejado con Zustand
 - **React Query** para gestión eficiente de datos
@@ -37,16 +37,19 @@
 ## 🚀 Tecnologías Utilizadas
 
 ### Core
+
 - **React 19** - Biblioteca de UI
 - **TypeScript** - Superset tipado de JavaScript
 - **Vite** - Build tool y dev server ultrarrápido
 
 ### Estado y Datos
+
 - **Zustand** - Gestión de estado global minimalista
 - **TanStack Query** - Gestión de estado del servidor y caché
 - **Axios** - Cliente HTTP para API requests
 
 ### UI/UX
+
 - **Tailwind CSS** - Framework de CSS utility-first
 - **Radix UI** - Componentes primitivos accesibles
 - **Lucide React** - Iconos SVG modernos
@@ -54,16 +57,19 @@
 - **next-themes** - Gestión de temas claro/oscuro
 
 ### Routing
+
 - **React Router DOM** - Enrutamiento del lado del cliente
 - **@react-router/dev** - Herramientas de desarrollo
 
 ### Testing
+
 - **Vitest** - Framework de testing ultrarrápido
 - **React Testing Library** - Utilidades de testing para React
 - **jsdom** - Implementación de DOM para testing
 - **@vitest/coverage-v8** - Reportes de cobertura
 
 ### Linting y Formatting
+
 - **ESLint** - Linter de JavaScript/TypeScript
 - **TypeScript ESLint** - Reglas específicas de TypeScript
 
@@ -86,29 +92,34 @@ src/
 ## 🛠️ Instalación y Configuración
 
 ### Prerrequisitos
+
 - **Node.js** (versión 18 o superior)
 - **npm** o **yarn**
 
 ### Pasos de instalación
 
 1. **Clonar el repositorio**
+
    ```bash
    git clone https://github.com/jorditan/gifs-app-react.git
    cd gifs-app-react
    ```
 
 2. **Instalar dependencias**
+
    ```bash
    npm install
    ```
 
 3. **Configurar variables de entorno**
+
    ```bash
    # Crear archivo .env
    VITE_GIPHY_API_KEY=tu_api_key_de_giphy
    ```
 
 4. **Ejecutar en modo desarrollo**
+
    ```bash
    npm run dev
    ```
@@ -143,6 +154,7 @@ npm run lint         # Ejecuta ESLint
 El proyecto incluye una suite completa de tests:
 
 ### Cobertura de Testing
+
 - **Componentes UI** - Tests unitarios para todos los componentes
 - **Hooks personalizados** - Testing de lógica de negocio
 - **Store de estado** - Validación de acciones y estado
@@ -150,6 +162,7 @@ El proyecto incluye una suite completa de tests:
 - **Utilidades** - Testing de funciones helper
 
 ### Ejecutar Tests
+
 ```bash
 # Tests en modo watch (recomendado durante desarrollo)
 npm run test
@@ -164,6 +177,7 @@ npm run coverage
 ## 🎯 Funcionalidades Implementadas
 
 ### ✅ Módulo de Favoritos
+
 - [x] Agregar GIFs a favoritos
 - [x] Quitar GIFs de favoritos
 - [x] Vista dedicada de favoritos
@@ -173,6 +187,7 @@ npm run coverage
 - [x] Tests completos del módulo
 
 ### ✅ Búsqueda y Navegación
+
 - [x] Integración con API de Giphy
 - [x] Búsqueda con términos dinámicos
 - [x] Paginación de resultados
@@ -180,6 +195,7 @@ npm run coverage
 - [x] Limpieza de historial
 
 ### ✅ Descarga de GIFs
+
 - [x] Descarga directa desde la aplicación
 - [x] Manejo de errores de descarga
 - [x] Feedback visual durante descarga
@@ -190,8 +206,8 @@ El estado de la aplicación se gestiona con Zustand:
 
 ```typescript
 interface GifsState {
-  favoriteGifs: Gif[];     // Lista de GIFs favoritos
-  prevTerms: string[];     // Historial de búsquedas
+  favoriteGifs: Gif[]; // Lista de GIFs favoritos
+  prevTerms: string[]; // Historial de búsquedas
   addFavorite: (gif: Gif) => void;
   removeFavorite: (id: string) => void;
   addPrevTerm: (term: string) => void;
@@ -201,6 +217,7 @@ interface GifsState {
 ```
 
 ### Persistencia
+
 - Los favoritos se guardan automáticamente en **localStorage**
 - El estado se recupera al recargar la página
 - Configuración con middleware `persist` de Zustand
@@ -208,28 +225,34 @@ interface GifsState {
 ## 🎨 Componentes Clave
 
 ### ButtonIcon
+
 Componente reutilizable para acciones con tooltips:
+
 ```typescript
-<ButtonIcon 
-  handleAction={() => addFavorite(gif)} 
-  variant="outline" 
-  tooltipText="Guardar en favoritos" 
+<ButtonIcon
+  handleAction={() => addFavorite(gif)}
+  variant="outline"
+  tooltipText="Guardar en favoritos"
   icon={Heart}
 />
 ```
 
 ### GifsContainer
+
 Muestra la grilla de GIFs con acciones de favoritos y descarga
 
 ### FavoriteGifsView
+
 Vista dedicada para gestionar GIFs favoritos
 
 ### SearchBar
+
 Barra de búsqueda con historial de términos
 
 ## 🌐 API Integration
 
 ### Giphy API
+
 - **Endpoint**: `https://api.giphy.com/v1/gifs/search`
 - **Parámetros**: `api_key`, `q`, `limit`, `offset`
 - **Rate limiting**: Manejado por TanStack Query
@@ -238,12 +261,14 @@ Barra de búsqueda con historial de términos
 ## 🚀 Optimizaciones
 
 ### Performance
+
 - **Code splitting** automático con Vite
 - **Lazy loading** de componentes pesados
 - **Memoización** con React.memo donde es necesario
 - **Debounce** en búsquedas para reducir API calls
 
 ### UX/UI
+
 - **Loading states** en todas las operaciones async
 - **Error boundaries** para manejo de errores
 - **Skeleton loading** para mejor percepción de velocidad
@@ -267,6 +292,7 @@ Barra de búsqueda con historial de términos
 5. Abrir Pull Request
 
 ### Guías de Contribución
+
 - Seguir convenciones de TypeScript
 - Escribir tests para nuevas funcionalidades
 - Mantener cobertura de tests > 80%
