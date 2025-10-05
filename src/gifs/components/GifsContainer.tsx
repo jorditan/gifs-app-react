@@ -10,8 +10,9 @@ interface Props {
 }
 
 export const GifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
-  const { addFavorite, favoriteGifs } = useGifsStore()
-
+  const { addFavorite } = useGifsStore()
+  const favorites = useGifsStore(s => s.favoriteGifs)
+  const isFav = (gif: Gif) => favorites.some(f => f.id == gif.id)
   return (
     <>
       {
@@ -31,7 +32,7 @@ export const GifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
                 <div className="flex gap-2">
                   <ButtonIcon handleAction={() => onDownloadClick(gif)} variant="outline" tooltipText="Descargar" icon={Download} />
 
-                  <ButtonIcon handleAction={() => addFavorite(gif)} variant="outline" tooltipText={favoriteGifs.includes(gif) ? "Quitar de favoritos" : "Guardar en favoritos"} icon={favoriteGifs.includes(gif) ? HeartOff : Heart}
+                  <ButtonIcon handleAction={() => addFavorite(gif)} variant="outline" tooltipText={isFav(gif) ? "Quitar de favoritos" : "Guardar en favoritos"} icon={isFav(gif) ? HeartOff : Heart}
                   />
                 </div>
               </div>

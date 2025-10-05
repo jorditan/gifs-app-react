@@ -35,7 +35,6 @@ describe('useGifs', () => {
   test('should render default values and methods', () => {
     const { result } = renderHook(() => useGifs(), { wrapper });
 
-    expect(result.current.previousTerms.length).toBe(0);
     expect(result.current.handleSearch).toBeDefined();
     expect(result.current.handleNextPage).toBeDefined();
     expect(result.current.handlePrevPage).toBeDefined();
@@ -104,23 +103,6 @@ describe('useGifs', () => {
     expect(global.fetch).toHaveBeenCalledWith('https://cdn.example/asset')
   })
 
-  test('should return no more than 8 previous terms', async () => {
-    const { result } = renderHook(() => useGifs(), { wrapper })
-
-    vi.spyOn(gifsActions, 'getGifsByQuery')
-      .mockResolvedValue([]);
-
-    for (let i = 1; i <= 9; i++) {
-      await act(async () => {
-        result.current.handleSearch(`Goku${i}`);
-      });
-    }
-
-    expect(result.current.previousTerms.length).toBe(8);
-    expect(result.current.previousTerms).toStrictEqual([
-      "goku9", "goku8", "goku7", "goku6", "goku5", "goku4", "goku3", "goku2",
-    ]);
-  })
 
   test('should advance to next page when handleNextPage is called', async () => {
     const { result } = renderHook(() => useGifs(), { wrapper })

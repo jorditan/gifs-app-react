@@ -4,16 +4,19 @@ import { getGifsByQuery } from "../../actions/get-gifs-query.action";
 import type { Gif } from "../../interfaces/gif.interface";
 import { toast } from "sonner";
 import { usePagination } from "../usePagination";
+import { useGifsStore } from "../../../store/useGifsStore";
 
 export const useGifs = () => {
   const queryClient = useQueryClient();
+
   const { page, setPage, resetPagination } = usePagination();
+  const { prevTerms, addPrevTerm } = useGifsStore();
 
   const [pageSize, setPageSize] = useState(10);
+  const [query, setQuery] = useState("");
+
   const offset = page * pageSize
 
-  const [query, setQuery] = useState("");
-  const [previousTerms, setPreviousTerms] = useState<string[]>([]);
 
   const {
     data: gifs = [],
@@ -23,7 +26,6 @@ export const useGifs = () => {
     queryKey: ["gifs", { q: query, offset: offset, limit: pageSize }],
     queryFn: () => getGifsByQuery(query, offset, pageSize),
     enabled: query.trim().length > 0,
-
     placeholderData: (prev) => prev,
   });
 
@@ -41,6 +43,7 @@ export const useGifs = () => {
         queryFn: () => getGifsByQuery(query, page - 1, pageSize),
       });
     }
+
   }, [page, pageSize, queryClient, query])
 
 
@@ -48,17 +51,13 @@ export const useGifs = () => {
     const q = raw.toLowerCase().trim();
     if (!q) return;
 
-    if (previousTerms.length === 0 || q !== previousTerms[0]) {
+    if (prevTerms.length === 0 || q !== prevTerms[0]) {
       resetPagination();
     }
 
     setQuery(q);
-
-    if (!previousTerms.includes(q)) {
-      setPreviousTerms((prev) => [q, ...prev].slice(0, 8));
-    }
+    addPrevTerm(q);
   };
-
 
   const handleNextPage = () => {
     const next = page + 1; setPage(next);
@@ -95,7 +94,6 @@ export const useGifs = () => {
 
   return {
     gifs,
-    previousTerms,
     isSuccess,
     isFetching,
     page,

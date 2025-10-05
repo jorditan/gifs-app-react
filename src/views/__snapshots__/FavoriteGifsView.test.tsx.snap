@@ -1,0 +1,140 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`GifsApp > shold render component properly 1`] = `
+<div>
+  <section
+    aria-label="Gifs content"
+    class="flex justify-center mt-9 mb-9"
+  >
+    <article
+      class="w-[80%] flex flex-col justify-center"
+    >
+      <div
+        class="flex justify-between"
+      >
+        <nav
+          aria-label="breadcrumb"
+          data-slot="breadcrumb"
+        >
+          <ol
+            class="text-secondary flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5"
+            data-slot="breadcrumb-list"
+          >
+            <li
+              class="inline-flex items-center gap-1.5"
+              data-slot="breadcrumb-item"
+            >
+              <a
+                data-discover="true"
+                href="/"
+              >
+                <a
+                  class="hover:text-muted-foreground transition-colors"
+                  data-slot="breadcrumb-link"
+                >
+                  Inicio
+                </a>
+              </a>
+            </li>
+            <li
+              aria-hidden="true"
+              class="[&>svg]:size-3.5"
+              data-slot="breadcrumb-separator"
+              role="presentation"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-chevron-right"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m9 18 6-6-6-6"
+                />
+              </svg>
+            </li>
+            <li
+              class="inline-flex items-center gap-1.5"
+              data-slot="breadcrumb-item"
+            >
+              <a
+                data-discover="true"
+                href="/favorites"
+              >
+                <a
+                  class="hover:text-muted-foreground transition-colors"
+                  data-slot="breadcrumb-link"
+                >
+                  Mis favoritos
+                </a>
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <a
+          data-discover="true"
+          href="/favorites/favorites"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 px-4 py-2 has-[>svg]:px-3"
+            data-slot="button"
+          >
+            Mis favoritos (0)
+          </button>
+        </a>
+      </div>
+      <div
+        class="w-[100%] justify-between flex"
+      />
+      <div
+        class="content-center pb-4 pt-4 w-[100%]"
+      >
+        <h2
+          class="text-3xl font-bold"
+        >
+          Encuentra tus gifs favoritos
+        </h2>
+        <p>
+          Encuentra tus gis favoritos
+        </p>
+      </div>
+      <div
+        class="flex flex-row justify-center w-full gap-3"
+      >
+        <div
+          class="search-container flex gap-3 pb-5"
+        >
+          <input
+            class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-[#fafafa] w-full"
+            data-slot="input"
+            placeholder="Buscar gif"
+            type="text"
+            value=""
+          />
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 h-9 px-4 py-2 has-[>svg]:px-3"
+            data-slot="button"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+      <p
+        class="text-sm text-muted text-center w-full"
+      >
+        Aquí veras todos los GIF´s que hayas marcado como tus favoritos
+      </p>
+      <div
+        class="gifs-container b-4"
+      />
+    </article>
+  </section>
+</div>
+`;

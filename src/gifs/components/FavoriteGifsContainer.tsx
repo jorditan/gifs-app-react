@@ -1,4 +1,4 @@
-import { Download, Heart } from "lucide-react";
+import { Download, HeartOff } from "lucide-react";
 
 import type { FC } from "react";
 import type { Gif } from "../interfaces/gif.interface";
@@ -11,10 +11,13 @@ interface Props {
 }
 
 export const FavoriteGifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
-  const { addFavorite } = useGifsStore()
+  const { removeFavorite } = useGifsStore()
 
   return (
     <>
+      {
+        gifs.length == 0 && <p className="text-sm text-muted text-center w-full">Aquí veras todos los GIF´s que hayas marcado como tus favoritos</p>
+      }
       <div className="gifs-container b-4">
         {
           gifs.map((gif) => (
@@ -27,7 +30,8 @@ export const FavoriteGifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
                 </p>
                 <div className="flex gap-2">
                   <ButtonIcon handleAction={() => onDownloadClick(gif)} variant="outline" tooltipText="Descargar" icon={Download} />
-                  <ButtonIcon handleAction={() => addFavorite(gif)} variant="outline" tooltipText="Guardar en favoritos" icon={Heart} />
+                  <ButtonIcon handleAction={() => removeFavorite(gif.id)} variant="outline" tooltipText="Quitar de favoritos" icon={HeartOff}
+                  />
                 </div>
               </div>
             </div>
