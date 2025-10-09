@@ -47,7 +47,7 @@ export const useGifs = () => {
   }, [page, pageSize, queryClient, query])
 
 
-  const handleSearch = (raw: string) => {
+  const handleQuerySearch = (raw: string) => {
     const q = raw.toLowerCase().trim();
     if (!q) return;
 
@@ -58,6 +58,7 @@ export const useGifs = () => {
     setQuery(q);
     addPrevTerm(q);
   };
+
 
   const handleNextPage = () => {
     const next = page + 1; setPage(next);
@@ -98,8 +99,7 @@ export const useGifs = () => {
     isFetching,
     page,
     pageSize,
-
-    handleSearch,
+    handleQuerySearch,
     handlePageSize,
     handleNextPage,
     handlePrevPage,

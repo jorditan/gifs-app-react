@@ -44,7 +44,6 @@ export const useGifsStore = create<GifsState>()(
           };
         });
       },
-
       addFavorites: (gifs: Gif[]) => {
         gifs.forEach((gif) => {
           set((state) => ({ favoriteGifs: [...state.favoriteGifs, gif] }));
@@ -56,6 +55,7 @@ export const useGifsStore = create<GifsState>()(
             (gif) => gif.id !== id,
           ),
         })),
+
       clearFavorites: () => set({ favoriteGifs: [] }),
     }),
     {

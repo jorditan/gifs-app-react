@@ -4,10 +4,11 @@ import { Input } from "@/components/ui/input";
 interface Props {
   placeholder: string
   page: number;
+  reset: boolean,
   onQuery: (query: string) => void;
 }
 
-export const SearchBar = ({ placeholder, onQuery }: Props) => {
+export const SearchBar = ({ placeholder, onQuery, reset }: Props) => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -23,7 +24,9 @@ export const SearchBar = ({ placeholder, onQuery }: Props) => {
 
   const handleSearch = () => {
     onQuery(query);
-    setQuery('');
+    if (reset) {
+      setQuery('');
+    }
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
