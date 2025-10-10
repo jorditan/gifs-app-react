@@ -20,20 +20,18 @@ export const useGifsStore = create<GifsState>()(
     (set) => ({
       favoriteGifs: [],
       prevTerms: [],
-      addPrevTerm: (term) => {
+
+      addPrevTerm: (term) =>
         set((state) => {
           if (!state.prevTerms.includes(term)) {
             return { prevTerms: [...state.prevTerms, term] };
           }
-          return {};
-        });
-      },
-      cleanTerms: () => {
-        set(() => ({
-          prevTerms: [],
-        }));
-      },
-      addFavorite: (gif) => {
+          return state;
+        }),
+
+      cleanTerms: () => set({ prevTerms: [] }),
+
+      addFavorite: (gif) =>
         set((state) => {
           if (state.favoriteGifs.some((g) => g.id === gif.id)) {
             return state;
@@ -42,24 +40,27 @@ export const useGifsStore = create<GifsState>()(
           return {
             favoriteGifs: [...state.favoriteGifs, gif],
           };
-        });
-      },
-      addFavorites: (gifs: Gif[]) => {
-        gifs.forEach((gif) => {
-          set((state) => ({ favoriteGifs: [...state.favoriteGifs, gif] }));
-        });
-      },
-      removeFavorite: (id: string) =>
+        }),
+
+      addFavorites: (gifs) =>
         set((state) => ({
-          favoriteGifs: (state.favoriteGifs ?? []).filter(
-            (gif) => gif.id !== id,
-          ),
+          favoriteGifs: [...state.favoriteGifs, ...gifs],
+        })),
+
+      removeFavorite: (id) =>
+        set((state) => ({
+          favoriteGifs: state.favoriteGifs.filter((gif) => gif.id !== id),
         })),
 
       clearFavorites: () => set({ favoriteGifs: [] }),
     }),
     {
       name: "favorite-gifs-storage",
+      // Excluir 'query' de la persistencia
+      partialize: (state) => ({
+        favoriteGifs: state.favoriteGifs,
+        prevTerms: state.prevTerms,
+      }),
     },
   ),
 );

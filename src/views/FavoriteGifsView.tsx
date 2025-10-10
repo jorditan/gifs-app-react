@@ -9,7 +9,7 @@ import { useMemo, useState } from "react";
 
 export const FavoriteGifsView = () => {
   const { gifs, handleDownload, handleNextPage, handlePrevPage, isFetching, page, } = useGifs();
-  const favoriteGifs = useGifsStore((state) => state.favoriteGifs); // Solo lees el estado
+  const favoriteGifs = useGifsStore((state) => state.favoriteGifs);
   const [query, setQuery] = useState("");
 
   const filteredFavorites = useMemo(() => {

@@ -12,11 +12,10 @@ export const useGifs = () => {
   const { page, setPage, resetPagination } = usePagination();
   const { prevTerms, addPrevTerm } = useGifsStore();
 
+  const [query, setQuery] = useState('');
   const [pageSize, setPageSize] = useState(10);
-  const [query, setQuery] = useState("");
 
   const offset = page * pageSize
-
 
   const {
     data: gifs = [],
@@ -25,12 +24,12 @@ export const useGifs = () => {
   } = useQuery({
     queryKey: ["gifs", { q: query, offset: offset, limit: pageSize }],
     queryFn: () => getGifsByQuery(query, offset, pageSize),
-    enabled: query.trim().length > 0,
-    placeholderData: (prev) => prev,
+    enabled: !!query,
+    staleTime: 15 * 1000,
   });
 
   useEffect(() => {
-    if (!query) { return };
+    if (query == "") { return };
     const nextPageOffset = (page + 1) * pageSize;
     queryClient.prefetchQuery({
       queryKey: ["gifs", { q: query, offset: nextPageOffset, limit: pageSize }],
@@ -38,8 +37,9 @@ export const useGifs = () => {
     })
 
     if (page > 0) {
+      const prevPageOffset = (page - 1) * pageSize;
       queryClient.prefetchQuery({
-        queryKey: ["gifs", { q: query, offset: nextPageOffset, limit: pageSize }],
+        queryKey: ["gifs", { q: query, offset: prevPageOffset, limit: pageSize }],
         queryFn: () => getGifsByQuery(query, page - 1, pageSize),
       });
     }

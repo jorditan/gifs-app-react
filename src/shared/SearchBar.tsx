@@ -25,7 +25,7 @@ export const SearchBar = ({ placeholder, onQuery, reset }: Props) => {
   const handleSearch = () => {
     onQuery(query);
     if (reset) {
-      setQuery('');
+      setQuery('')
     }
   }
 

@@ -1,6 +1,4 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button"
-import { useGifsStore } from "@/store/useGifsStore"
 import type { FC } from "react";
 import { Link } from "react-router-dom"
 
@@ -9,7 +7,6 @@ interface Props {
 }
 
 export const CustomTitle: FC<Props> = ({ title }) => {
-  const { favoriteGifs } = useGifsStore();
   return (
     <>
       <div className="flex justify-between">
@@ -26,10 +23,6 @@ export const CustomTitle: FC<Props> = ({ title }) => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <Link to="favorites">
-          <Button variant="secondary">{`Mis favoritos (${favoriteGifs.length})`}</Button>
-        </Link>
-
       </div>
     </>
   )
