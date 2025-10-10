@@ -13,7 +13,7 @@ exports[`GifsApp > shold render component properly 1`] = `
         class="flex justify-between"
       >
         <h1>
-          Gifs app
+          Gifs search app
         </h1>
         <a
           data-discover="true"

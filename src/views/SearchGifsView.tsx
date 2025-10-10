@@ -24,7 +24,7 @@ export const SearchGifsView = () => {
       <section aria-label="Gifs content" className="flex justify-center mt-9 mb-9">
         <article className="w-[80%] flex flex-col justify-center">
           <div className="flex justify-between">
-            <h1>Gifs app</h1>
+            <h1>Gifs search app</h1>
             <Link to="favorites">
               <Button variant="secondary">{`Mis favoritos (${favoriteGifs.length})`}</Button>
             </Link>

@@ -25,7 +25,7 @@ export const FavoriteGifsView = () => {
       <article className="w-[80%] flex flex-col justify-center">
         <CustomTitle title="Mis favoritos" />
 
-        <CustomHeader title="Encuentra tus gifs favoritos" description="Encuentra tus gis favoritos" />
+        <CustomHeader title="Encuentra tus gifs favoritos" description="Para quitar " />
 
         <div className="flex flex-row justify-center w-full gap-3">
           <SearchBar page={page} reset={false} onQuery={setQuery} placeholder="Buscar gif" />
