@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import { ButtonIcon } from "./ButtonIcon";
 interface Props {
   placeholder: string
   page: number;
+  reset: boolean,
   onQuery: (query: string) => void;
 }
 
-export const SearchBar = ({ placeholder, onQuery }: Props) => {
+export const SearchBar = ({ placeholder, onQuery, reset }: Props) => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -23,7 +26,9 @@ export const SearchBar = ({ placeholder, onQuery }: Props) => {
 
   const handleSearch = () => {
     onQuery(query);
-    setQuery('');
+    if (reset) {
+      setQuery('')
+    }
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -34,7 +39,7 @@ export const SearchBar = ({ placeholder, onQuery }: Props) => {
 
   return (
     <>
-      <div className="search-container flex gap-3 pb-5">
+      <div className="search-container flex gap-3">
         <Input type="text"
           className="text-[#fafafa] w-full"
           value={query}
@@ -42,9 +47,21 @@ export const SearchBar = ({ placeholder, onQuery }: Props) => {
           placeholder={placeholder}
           onKeyDown={handleKeyDown}>
         </Input>
-        <Button variant="secondary"
+        <Button
+          variant="secondary"
           onClick={handleSearch}
-        >Buscar</Button>
+          className="hidden md:inline-flex"
+        >
+          Buscar
+        </Button>
+        <ButtonIcon
+          tooltipText="Buscar"
+          icon={Search}
+          variant="secondary"
+          handleAction={handleSearch}
+          className="md:hidden"
+        >
+        </ButtonIcon>
       </div>
     </>
   )

@@ -5,23 +5,33 @@ import { CustomHeader } from "@/shared/CustomHeader";
 import { CustomTitle } from "@/shared/CustomTitle";
 import { SearchBar } from "@/shared/SearchBar";
 import { useGifsStore } from "@/store/useGifsStore";
+import { useMemo, useState } from "react";
 
 export const FavoriteGifsView = () => {
-  const { handleSearch, gifs, handleDownload, handleNextPage, handlePrevPage, isFetching, page, } = useGifs();
+  const { gifs, handleDownload, handleNextPage, handlePrevPage, isFetching, page, } = useGifs();
+  const favoriteGifs = useGifsStore((state) => state.favoriteGifs);
+  const [query, setQuery] = useState("");
 
-  const { favoriteGifs } = useGifsStore();
+  const filteredFavorites = useMemo(() => {
+    if (!query.trim()) return favoriteGifs;
+
+    return favoriteGifs.filter((gif) =>
+      gif.title.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [favoriteGifs, query]);
+
   return (
     <section aria-label="Gifs content" className="flex justify-center mt-9 mb-9">
       <article className="w-[80%] flex flex-col justify-center">
-        <CustomTitle title="Mis favoritos" />
+        <CustomTitle title="Favoritos" />
 
-        <CustomHeader title="Encuentra tus gifs favoritos" description="Encuentra tus gis favoritos" />
+        <CustomHeader title="Mis gifs favoritos ❤️" description="Mantén a manos los que más te gustaron" />
 
-        <div className="flex flex-row justify-center w-full gap-3">
-          <SearchBar page={page} onQuery={handleSearch} placeholder="Buscar gif" />
+        <div className="flex flex-row justify-center w-full gap-3 pb-5">
+          <SearchBar page={page} reset={false} onQuery={setQuery} placeholder="Buscar gif" />
         </div>
 
-        <FavoriteGifsContainer gifs={favoriteGifs} onDownloadClick={handleDownload} />
+        <FavoriteGifsContainer gifs={filteredFavorites} onDownloadClick={handleDownload} />
 
         {gifs.length > 0 && (
           <ButtonPagination fetch={isFetching} currentPage={page + 1} onPrevClick={handlePrevPage} onNextClick={handleNextPage} gifs={gifs} />

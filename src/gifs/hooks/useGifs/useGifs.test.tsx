@@ -35,7 +35,7 @@ describe('useGifs', () => {
   test('should render default values and methods', () => {
     const { result } = renderHook(() => useGifs(), { wrapper });
 
-    expect(result.current.handleSearch).toBeDefined();
+    expect(result.current.handleQuerySearch).toBeDefined();
     expect(result.current.handleNextPage).toBeDefined();
     expect(result.current.handlePrevPage).toBeDefined();
   })
@@ -56,7 +56,7 @@ describe('useGifs', () => {
     const { result } = renderHook(() => useGifs(), { wrapper })
 
     act(() => {
-      result.current.handleSearch('Cats')
+      result.current.handleQuerySearch('Cats')
     })
 
     await waitFor(() => {
@@ -68,7 +68,7 @@ describe('useGifs', () => {
   })
 
 
-  test('should prefetch a list of page when handleSearch is called', async () => {
+  test('should prefetch a list of page when handleQuerySearch is called', async () => {
     const queryClient = new QueryClient()
     const spy = vi.spyOn(queryClient, "prefetchQuery")
 
@@ -79,7 +79,7 @@ describe('useGifs', () => {
     const { result } = renderHook(() => useGifs(), { wrapper })
 
     act(() => {
-      result.current.handleSearch("john cena");
+      result.current.handleQuerySearch("john cena");
     })
 
     act(() => {

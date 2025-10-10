@@ -21,13 +21,19 @@ export const CustomDropdownMenu: FC<Props> = ({ buttonText, items, onItemClick, 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{buttonText}</Button>
+        <Button
+          variant="outline"
+          className="md:inline-flex"
+        >
+          {buttonText}
+        </Button>
+
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
         <DropdownMenuGroup>
           {
             items.map((i) =>
-              <DropdownMenuItem className={`${i === pageSize
+              <DropdownMenuItem key={i} className={`${i === pageSize
                 ? "bg-primary text-secondary"
                 : "cursor-pointer"
                 }`} onClick={() => onItemClick(i)}>

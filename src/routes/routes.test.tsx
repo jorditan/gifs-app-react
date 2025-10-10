@@ -23,7 +23,7 @@ describe("App routes", () => {
       </QueryClientProvider>
     )
 
-    expect(screen.getByText("Buscador de Gifs")).toBeDefined();
+    expect(screen.getByText("Buscador de gifs 🔍")).toBeDefined();
   });
 
   test("should renders FavoriteGifsView at second path", () => {
@@ -40,7 +40,7 @@ describe("App routes", () => {
       </QueryClientProvider>
     )
 
-    expect(screen.getByText("Encuentra tus gifs favoritos")).toBeDefined();
+    expect(screen.getByText("Mis gifs favoritos ❤️")).toBeDefined();
   });
 
 });
