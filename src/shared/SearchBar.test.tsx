@@ -8,7 +8,6 @@ describe('SearchBar', () => {
 
     expect(container).toMatchSnapshot()
     expect(screen.getByRole('textbox')).toBeDefined();
-    expect(screen.getByRole('button')).toBeDefined();
   })
 
   test('should call onQuery with the correct value after 700ms', async () => {
@@ -43,11 +42,11 @@ describe('SearchBar', () => {
     const onQuery = vi.fn();
     render(<SearchBar reset={true} onQuery={onQuery} placeholder={""} page={0} />)
 
-    const button = screen.getByRole('button');
+    const button = screen.getAllByRole('button');
     const input = screen.getByRole('textbox');
 
     fireEvent.change(input, { target: { value: 'test' } });
-    fireEvent.change(button);
+    fireEvent.change(button[0]);
 
     await waitFor(() => {
       expect(onQuery).toHaveBeenCalledTimes(1);

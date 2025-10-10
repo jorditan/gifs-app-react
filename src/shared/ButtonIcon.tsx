@@ -4,7 +4,8 @@ interface Props {
   tooltipText: string
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>
   variant: "outline" | "link" | "default" | "destructive" | "secondary" | "ghost" | null | undefined;
-  handleAction: () => void;
+  handleAction?: () => void;
+  className: string;
 }
 
 import {
@@ -19,7 +20,7 @@ export function ButtonIcon(props: Props & { tooltipDefaultOpen?: boolean }) {
   return (
     <Tooltip defaultOpen={props.tooltipDefaultOpen}>
       <TooltipTrigger asChild>
-        <Button onClick={props.handleAction} variant={props.variant} size="icon" className="size-8">
+        <Button className={props.className} onClick={props.handleAction} variant={props.variant} size="icon" >
           <props.icon />
         </Button>
       </TooltipTrigger>

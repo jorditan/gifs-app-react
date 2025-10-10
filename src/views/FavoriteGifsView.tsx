@@ -23,11 +23,11 @@ export const FavoriteGifsView = () => {
   return (
     <section aria-label="Gifs content" className="flex justify-center mt-9 mb-9">
       <article className="w-[80%] flex flex-col justify-center">
-        <CustomTitle title="Mis favoritos" />
+        <CustomTitle title="Favoritos" />
 
-        <CustomHeader title="Encuentra tus gifs favoritos" description="Para quitar " />
+        <CustomHeader title="Mis gifs favoritos ❤️" description="Mantén a manos los que más te gustaron" />
 
-        <div className="flex flex-row justify-center w-full gap-3">
+        <div className="flex flex-row justify-center w-full gap-3 pb-5">
           <SearchBar page={page} reset={false} onQuery={setQuery} placeholder="Buscar gif" />
         </div>
 

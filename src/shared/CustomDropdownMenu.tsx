@@ -6,8 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Check } from "lucide-react";
+import { Check, Search } from "lucide-react";
 import { type FC } from "react"
+import { ButtonIcon } from "./ButtonIcon";
 
 interface Props {
   buttonText: string,
@@ -21,13 +22,19 @@ export const CustomDropdownMenu: FC<Props> = ({ buttonText, items, onItemClick, 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{buttonText}</Button>
+        <Button
+          variant="outline"
+          className="md:inline-flex"
+        >
+          {buttonText}
+        </Button>
+
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
         <DropdownMenuGroup>
           {
             items.map((i) =>
-              <DropdownMenuItem className={`${i === pageSize
+              <DropdownMenuItem key={i} className={`${i === pageSize
                 ? "bg-primary text-secondary"
                 : "cursor-pointer"
                 }`} onClick={() => onItemClick(i)}>
