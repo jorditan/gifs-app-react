@@ -5,7 +5,7 @@ interface Props {
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>
   variant: "outline" | "link" | "default" | "destructive" | "secondary" | "ghost" | null | undefined;
   handleAction?: () => void;
-  className: string;
+  className?: string;
 }
 
 import {

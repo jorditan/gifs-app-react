@@ -7,6 +7,30 @@ vi.mock("react-dom/client", () => ({
   })),
 }));
 
+vi.mock("react-router-dom", () => ({
+  createBrowserRouter: vi.fn(() => ({})),
+  RouterProvider: vi.fn(({ children }) => children),
+}));
+
+vi.mock("@tanstack/react-query", () => ({
+  QueryClient: vi.fn(),
+  QueryClientProvider: vi.fn(({ children }) => children),
+}));
+
+vi.mock("@tanstack/react-query-devtools", () => ({
+  ReactQueryDevtools: vi.fn(() => null),
+}));
+
+vi.mock("./components/ui/sonner", () => ({
+  Toaster: vi.fn(() => null),
+}));
+
+vi.mock("./index.css", () => ({}));
+
+vi.mock("./routes/routes", () => ({
+  routes: [],
+}));
+
 describe("index.tsx", () => {
   test("should render app into root element", async () => {
     // Creamos un div root falso en el DOM

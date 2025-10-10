@@ -6,9 +6,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Check, Search } from "lucide-react";
+import { Check } from "lucide-react";
 import { type FC } from "react"
-import { ButtonIcon } from "./ButtonIcon";
 
 interface Props {
   buttonText: string,
