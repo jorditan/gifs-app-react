@@ -1,5 +1,5 @@
 import { Download, Heart, HeartOff } from "lucide-react";
-import type { FC } from "react";
+import { type FC } from "react";
 import type { Gif } from "../interfaces/gif.interface";
 import { ButtonIcon } from "../../shared/ButtonIcon";
 import { useGifsStore } from "@/store/useGifsStore";
@@ -13,6 +13,7 @@ export const GifsContainer: FC<Props> = ({ gifs, onDownloadClick }) => {
   const { addFavorite } = useGifsStore()
   const favorites = useGifsStore(s => s.favoriteGifs)
   const isFav = (gif: Gif) => favorites.some(f => f.id == gif.id)
+
   return (
     <>
       {

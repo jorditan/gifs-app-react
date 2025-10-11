@@ -5,6 +5,8 @@ import { create } from "zustand";
 import { toast } from "sonner";
 
 interface GifsState {
+  query: string;
+  setQuery: (query: string) => void;
   prevTerms: string[];
   favoriteGifs: Gif[];
   addFavorite: (gif: Gif) => void;
@@ -18,10 +20,14 @@ interface GifsState {
 export const useGifsStore = create<GifsState>()(
   persist(
     (set) => ({
+      query: "",
+
       favoriteGifs: [],
       prevTerms: [],
 
-      addPrevTerm: (term) =>
+      setQuery: (query: string) => set({ query }),
+
+      addPrevTerm: (term: string) =>
         set((state) => {
           if (!state.prevTerms.includes(term)) {
             return { prevTerms: [...state.prevTerms, term] };
@@ -31,7 +37,7 @@ export const useGifsStore = create<GifsState>()(
 
       cleanTerms: () => set({ prevTerms: [] }),
 
-      addFavorite: (gif) =>
+      addFavorite: (gif: Gif) =>
         set((state) => {
           if (state.favoriteGifs.some((g) => g.id === gif.id)) {
             return state;
@@ -42,12 +48,12 @@ export const useGifsStore = create<GifsState>()(
           };
         }),
 
-      addFavorites: (gifs) =>
+      addFavorites: (gifs: Gif[]) =>
         set((state) => ({
           favoriteGifs: [...state.favoriteGifs, ...gifs],
         })),
 
-      removeFavorite: (id) =>
+      removeFavorite: (id: string) =>
         set((state) => ({
           favoriteGifs: state.favoriteGifs.filter((gif) => gif.id !== id),
         })),
@@ -56,7 +62,6 @@ export const useGifsStore = create<GifsState>()(
     }),
     {
       name: "favorite-gifs-storage",
-      // Excluir 'query' de la persistencia
       partialize: (state) => ({
         favoriteGifs: state.favoriteGifs,
         prevTerms: state.prevTerms,

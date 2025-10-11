@@ -10,22 +10,24 @@ export const useGifs = () => {
   const queryClient = useQueryClient();
 
   const { page, setPage, resetPagination } = usePagination();
-  const { prevTerms, addPrevTerm } = useGifsStore();
+  const { prevTerms, addPrevTerm, query, setQuery } = useGifsStore();
 
-  const [query, setQuery] = useState('');
   const [pageSize, setPageSize] = useState(10);
 
   const offset = page * pageSize
 
   const {
     data: gifs = [],
-    isSuccess,
     isFetching,
   } = useQuery({
     queryKey: ["gifs", { q: query, offset: offset, limit: pageSize }],
-    queryFn: () => getGifsByQuery(query, offset, pageSize),
-    enabled: !!query,
+    queryFn: () => {
+      console.log('🔥 Fetching:', { query, offset, pageSize });
+      return getGifsByQuery(query, offset, pageSize);
+    },
+    enabled: query.trim() !== '',
     staleTime: 15 * 1000,
+
   });
 
   useEffect(() => {
@@ -95,7 +97,6 @@ export const useGifs = () => {
 
   return {
     gifs,
-    isSuccess,
     isFetching,
     page,
     pageSize,
