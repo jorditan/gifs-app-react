@@ -8,7 +8,7 @@ import { useGifsStore } from "@/store/useGifsStore";
 import { useMemo, useState } from "react";
 
 export const FavoriteGifsView = () => {
-  const { gifs, handleDownload, handleNextPage, handlePrevPage, isFetching, page, } = useGifs();
+  const { handleDownload, handleNextPage, handlePrevPage, isFetching, page, } = useGifs();
   const favoriteGifs = useGifsStore((state) => state.favoriteGifs);
   const [query, setQuery] = useState("");
 
@@ -33,8 +33,8 @@ export const FavoriteGifsView = () => {
 
         <FavoriteGifsContainer gifs={filteredFavorites} onDownloadClick={handleDownload} />
 
-        {gifs.length > 0 && (
-          <ButtonPagination fetch={isFetching} currentPage={page + 1} onPrevClick={handlePrevPage} onNextClick={handleNextPage} gifs={gifs} />
+        {favoriteGifs.length > 0 && (
+          <ButtonPagination fetch={isFetching} currentPage={page + 1} onPrevClick={handlePrevPage} onNextClick={handleNextPage} gifs={favoriteGifs} />
         )}
       </article>
 
